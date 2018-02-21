@@ -1,5 +1,5 @@
- /*
- Date: 2014-09-25 3:59:11 [PM] 
+ /*笔记 1180 1212行
+ Date: 2014-09-25 3:59:11 [PM  ] 
  */
 function StringBuilder() {
     this.strings = new Array, this.length = 0
@@ -1177,7 +1177,7 @@ var category = {OBJ: $("#_JD_ALLSORT"),
 		// URL_Serv:
 		// "http://localhost:8081/rest/itemcat/all?callback=category.getDataService",
 		//该路径是谁调用
-		URL_Serv: "http://localhost:8082/category.json",     //像这样我修改了url，这个是js文件，按道理来说我刷新页面是不会报错的，因为js文件修改后我没有清除浏览器缓存是不会生效的
+		URL_Serv: "http://localhost:8081/category.json",     //像这样我修改了url，这个是js文件，按道理来说我刷新页面是不会报错的，因为js文件修改后我没有清除浏览器缓存是不会生效的
 		URL_BrandsServ: "http://d.360buy.com/brandVclist2/get?callback=category.getBrandService&ids=a,9211,9212^b,9214,9215^c,9217,9218^d,9220,9221^e,9223,9224^f,9226,9227^g,9229,9230^h,9232,9233^m,9235,9236^i,9238,9239^j,9241,9242^p,9244,9245^k,9247,9248^l,9250,9251",
 		FN_GetLink: function(a, b) {
 	        var c, d;
@@ -1210,11 +1210,12 @@ var category = {OBJ: $("#_JD_ALLSORT"),
 		 */
     },FN_GetData: function() { 
     	// 使用jsonp来实现跨域请求
-         //$.getJSONP(this.URL_Serv, category.getDataService);
+//$请求数据调用时改成JSONP，getDataService方法作为参数传到服务端，数据在该方法里面--category.json。在1235的方法里面对数据进行处理
+         $.getJSONP(this.URL_Serv, category.getDataService);
     	// 直接使用ajax请求json数据
-		 $.getJSON(this.URL_Serv, function(json){
-			 category.getDataService(json);
-		 });
+//		 $.getJSON(this.URL_Serv, function(json){
+//			 category.getDataService(json);
+//		 });
     },FN_GetBrands: function() {
       // $.getJSONP(this.URL_BrandsServ, category.getBrandService)
     },FN_RefactorJSON: function(a, b) {
@@ -1230,6 +1231,7 @@ var category = {OBJ: $("#_JD_ALLSORT"),
       // $.getJSONP(this.URL_BrandsServ, category.getBrandService)
     },getDataService: function(a) {
         var b = [], c = this;
+        //参数a是要得到的数据，可以跨域请求到
         $.each(a.data, function(a) {
             this.index = a, "l" == this.t && (this.i = c.FN_RefactorJSON(this.i, 7)), b.push(c.renderItem(this, a))
         });
