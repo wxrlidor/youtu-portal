@@ -1174,10 +1174,9 @@ $.extend(jdModelCallCenter, {autoLocation: function(a) {
 var category = {OBJ: $("#_JD_ALLSORT"),
 		// URL_Serv:
 		// "http://manage.taotao.com/web/itemcat/all?callback=category.getDataService",
-		// URL_Serv:
-		// "http://localhost:8081/rest/itemcat/all?callback=category.getDataService",
+		URL_Serv:"http://localhost:8081/rest/itemcat/list?callback=category.getDataService",
 		//该路径是谁调用
-		URL_Serv: "http://localhost:8081/category.json",     //像这样我修改了url，这个是js文件，按道理来说我刷新页面是不会报错的，因为js文件修改后我没有清除浏览器缓存是不会生效的
+		//URL_Serv: "http://localhost:8081/category.json",     //像这样我修改了url，这个是js文件，按道理来说我刷新页面是不会报错的，因为js文件修改后我没有清除浏览器缓存是不会生效的
 		URL_BrandsServ: "http://d.360buy.com/brandVclist2/get?callback=category.getBrandService&ids=a,9211,9212^b,9214,9215^c,9217,9218^d,9220,9221^e,9223,9224^f,9226,9227^g,9229,9230^h,9232,9233^m,9235,9236^i,9238,9239^j,9241,9242^p,9244,9245^k,9247,9248^l,9250,9251",
 		FN_GetLink: function(a, b) {
 	        var c, d;
