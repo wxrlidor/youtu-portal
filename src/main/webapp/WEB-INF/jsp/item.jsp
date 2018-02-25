@@ -298,6 +298,13 @@
 		setTimeout(function(){
 			itemControl.getItemDesc(itemId);
 		},1000);
+		//点击购物车链接的时候调用
+	     $("#InitCartUrl").click(function(){
+	         //得到商品数量的值
+	         var num = $("#buy-num").val();
+	         //设置购物车连接的href的值
+	         $("#InitCartUrl").attr("href"," /cart/add/"+itemId+".html?num="+num);
+	      });
 	});
 </script>
 </body>

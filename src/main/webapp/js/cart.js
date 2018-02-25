@@ -6,8 +6,8 @@ var TTCart = {
 		$(".increment").click(function(){//＋
 			var _thisInput = $(this).siblings("input");
 			_thisInput.val(eval(_thisInput.val()) + 1);
-			$.post("/cart/update/num/"+_thisInput.attr("itemId")+"/"+_thisInput.val() + ".action",function(data){
-				TTCart.refreshTotalPrice();
+			$.post("/cart/update/num/"+_thisInput.attr("itemId")+"/"+_thisInput.val() + ".html",function(data){
+					TTCart.refreshTotalPrice();
 			});
 		});
 		$(".decrement").click(function(){//-
@@ -16,14 +16,15 @@ var TTCart = {
 				return ;
 			}
 			_thisInput.val(eval(_thisInput.val()) - 1);
-			$.post("/cart/update/num/"+_thisInput.attr("itemId")+"/"+_thisInput.val() + ".action",function(data){
-				TTCart.refreshTotalPrice();
+			$.post("/cart/update/num/"+_thisInput.attr("itemId")+"/"+_thisInput.val() + ".html",function(data){
+					TTCart.refreshTotalPrice();
 			});
 		});
+		//输入框改变事件
 		$(".quantity-form .quantity-text").rnumber(1);//限制只能输入数字
 		$(".quantity-form .quantity-text").change(function(){
 			var _thisInput = $(this);
-			$.post("/service/cart/update/num/"+_thisInput.attr("itemId")+"/"+_thisInput.val(),function(data){
+			$.post("/cart/update/num/"+_thisInput.attr("itemId")+"/"+_thisInput.val() + ".html",function(data){
 				TTCart.refreshTotalPrice();
 			});
 		});
