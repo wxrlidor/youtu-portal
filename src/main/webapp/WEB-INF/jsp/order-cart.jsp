@@ -25,11 +25,13 @@
 <!--shortcut end-->
 
 <div class="w w1 header clearfix">
-    <div id="logo"><a href="/"><img src="/images/taotao-logo.gif" alt="优兔商城"></a></div>
+    <div id="logo"><a href="/"><img src="/images/youtu-logo.jpg" alt="优兔商城"></a></div>
 </div>
 
 <form id="orderForm" class="hide" action="/order/create.html" method="post">
 		<input type="hidden" name="paymentType" value="1"/>
+		<!-- <input id="userId" name="userId" />
+		<input id="buyerNick" name="buyerNick" /> -->
 		<c:forEach items="${cartList }" var="cart" varStatus="status">
 			<c:set var="totalPrice"  value="${ totalPrice + (cart.price * cart.num)}"/>
 			<input type="hidden" name="orderItems[${status.index}].itemId" value="${cart.id}"/>
@@ -37,7 +39,7 @@
 			<input type="hidden" name="orderItems[${status.index}].price" value="${cart.price}"/>
 			<input type="hidden" name="orderItems[${status.index}].totalFee" value="${cart.price * cart.num}"/>
 			<input type="hidden" name="orderItems[${status.index}].title" value="${cart.title}"/>
-			<input type="hidden" name="orderItems[${status.index}].picPath" value="${cart.images[0]}"/>
+			<input type="hidden" name="orderItems[${status.index}].picPath" value="${cart.image}"/>
 		</c:forEach>
 		<input type="hidden" name="payment" value="<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${totalPrice/100 }"/>"/>
 		<input type="hidden" name="orderShipping.receiverName" value="入云龙"/>
@@ -123,7 +125,7 @@
 						<!-- span class="qmark-icon qmark-tip" data-tips="送货上门后再收款，支持现金、POS机刷卡、支票支付 <a target='_blank' href='http://psfw.jd.com/help/distribution-768.html-2-2825-2893-0-1427094595258.html'>查看服务及配送范围</a>"></span -->
 					</div>
 				</li>
-				<li style="cursor: pointer;" onclick="save_Pay(4);">
+				<%-- <li style="cursor: pointer;" onclick="save_Pay(4);">
 
 					<div class="payment-item  online-payment "
 						for="pay-method-4" payname="在线支付" payid="4">
@@ -155,7 +157,7 @@
 						<!--  span class="qmark-icon qmark-tip" data-tips="在线支付，支持绝大多数银行借记卡及部分银行信用卡 <a href='http://help.jd.com/help/question-68.html' target='_blank' class='ftx-05'>查看银行及限额</a>"></span -->
 						<!-- span class="qmark-icon qmark-tip" data-tips="通过快钱平台收款  汇款后1-3个工作日到账 <a target='_blank' href='http://help.jd.com/help/question-69.html'>查看帮助</a>"></span -->
 					</div>
-				</li> 
+				</li>  --%>
 				<!--div id="shipment"></div--> 
 				<script>
 					$('.online-payment').hover(function() {
@@ -172,7 +174,7 @@
 <div class="step-tit">
 	<h3>送货清单</h3>
 	<div class="extra-r">
-					<a href="/cart/show.html" id="cartRetureUrl" class="return-edit ftx-05">返回修改购物车</a>
+					<a href="/cart/cartList.html" id="cartRetureUrl" class="return-edit ftx-05">返回修改购物车</a>
 			</div>
 </div>
 <div class="step-cont" id="skuPayAndShipment-cont">
@@ -188,7 +190,7 @@
 
 			<div class="p-img">
 				<a target="_blank" href="/item/${cart.id}.html">
-					<img src="${cart.images[0]}" alt="">
+					<img src="${cart.image}" alt="">
 				</a>
 			</div>
 			<div class="goods-msg">
@@ -313,7 +315,29 @@
 
   </div>
 </div>
-
+<!-- <script type="text/javascript">
+$(function(){
+	// 查看是否已经登录，如果已经登录查询登录信息
+	//取出cookie中的token，名称为
+	var _ticket = $.cookie("YOUTU_TOKEN");
+	if(!_ticket){
+		return ;
+	}
+	//使用jQuery包装好的jsonp调用
+	$.ajax({
+		url : "http://localhost:8084/user/token/" + _ticket,
+		dataType : "jsonp",
+		type : "GET",
+		success : function(data){
+			if(data.status == 200){
+				//把userId和昵称赋值给表单元素
+				$("#userId").val(data.data.id);
+				$("#buyerNick").val(data.data.nickname)
+			}
+		}
+	});
+});
+</script> -->
 <!-- /main -->
 	<jsp:include page="commons/footer.jsp" />
 	</body>

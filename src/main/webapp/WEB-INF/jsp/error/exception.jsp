@@ -27,7 +27,7 @@
 <body id="mainframe">
 	<div class="w w1 header clearfix">
 		<div id="logo">
-			<a href="/"><img src="/images/taotao-logo.gif" alt="淘淘商城"></a>
+			<a href="/"><img src="/images/taotao-logo.gif" alt="优兔商城"></a>
 		</div>
 	</div>
 
@@ -101,7 +101,7 @@
 			<ul class="m">
 				<li class="fore1">您可以：稍后再试或联系客服400-8888-9999。
 				</li>
-				<li class="fore2">返回<a href="/" target="_blank">淘淘首页</a></li>
+				<li class="fore2">返回<a href="/" target="_blank">优兔首页</a></li>
 				<li class="fore3">错误消息</li>
  				<li class="fore4">${message }</li>
 			</ul>

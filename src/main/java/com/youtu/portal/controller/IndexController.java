@@ -16,9 +16,12 @@ import com.youtu.portal.service.ContentService;
 public class IndexController {
 	@Autowired
 	private ContentService contentService;
-
+	/**
+	 * 展示首页返回一个逻辑视图，需要把首页大广告位的json数据传递给jsp
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/index")
-	// 展示首页返回一个逻辑视图，需要把首页大广告位的json数据传递给jsp
 	public String showIndex(Model model) {
 		// 取得首页大广告位数据
 		String adJson = contentService.getAdContentList();
@@ -35,10 +38,10 @@ public class IndexController {
 
 	@RequestMapping(value = "/httpclient/post", method = RequestMethod.POST)
 	@ResponseBody
-	// public YouTuResult testPost(){
-	// return YouTuResult.ok();
-	// }
 	public String testPost(String username, String password) {
 		return "username:" + username + "\tpassword:" + password;
 	}
+	// public YouTuResult testPost(){
+		// return YouTuResult.ok();
+		// }
 }
