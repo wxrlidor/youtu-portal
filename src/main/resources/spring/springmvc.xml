@@ -16,5 +16,17 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
+	<!-- 拦截器配置 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 拦截订单类请求 -->
+			<mvc:mapping path="/order/**"/>
+			<bean class="com.youtu.portal.interceptor.LoginInterceptor"/>
+		</mvc:interceptor>
+		<!-- <mvc:interceptor>
+			拦截购物车类请求
+			<mvc:mapping path="/cart/**"/>
+			<bean class="com.youtu.portal.interceptor.LoginInterceptor"/>
+		</mvc:interceptor> -->
+	</mvc:interceptors>
 </beans>
