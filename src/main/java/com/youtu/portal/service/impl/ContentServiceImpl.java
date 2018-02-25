@@ -28,20 +28,26 @@ public class ContentServiceImpl implements ContentService {
 	private String REST_BASE_URL;
 	@Value("${REST_INDEX_AD_URL}")
 	private String REST_INDEX_AD_URL;
-
+	@Value("${REST_INDEX_RIGHT_AD_URL}")
+	private String REST_INDEX_RIGHT_AD_URL;
+	@Value("${REST_INDEX_LITTLE_AD_URL}")
+	private String REST_INDEX_LITTLE_AD_URL;
+	
+	/**
+	 * 调用服务层，查询大广告位列表
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public String getContentList() {
+	public String getAdContentList() {
 		// 调用服务层的服务
 		String result = HttpClientUtil.doGet(REST_BASE_URL + REST_INDEX_AD_URL);
 		// 把字符串转换成TaotaoResult
-		try { 
-			YouTuResult youTuResult = YouTuResult.formatToList(result, TbContent.class);
+		try {
+			YouTuResult taotaoResult = YouTuResult.formatToList(result, TbContent.class);
 			// 取内容列表
-			List<TbContent> list = (List<TbContent>) youTuResult.getData();
+			List<TbContent> list = (List<TbContent>) taotaoResult.getData();
 			List<Map> resultList = new ArrayList<>();
-			// 转换成Json数据格式，创建一个jsp页码要求的pojo列表
-			// 遍历列表list
+			// 创建一个jsp页面要求的pojo列表
 			for (TbContent tbContent : list) {
 				Map map = new HashMap<>();
 				map.put("src", tbContent.getPic());
@@ -52,13 +58,77 @@ public class ContentServiceImpl implements ContentService {
 				map.put("heightB", 240);
 				map.put("href", tbContent.getUrl());
 				map.put("alt", tbContent.getSubTitle());
-				//添加上面的List<Map>
 				resultList.add(map);
 			}
-			// 把resultList转换成Json格式字符串
 			return JsonUtils.objectToJson(resultList);
 		} catch (Exception e) {
-			//在控制台打印出异常
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * 调用服务层，查询右上角广告位列表
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public String getRightAdContentList() {
+		// 调用服务层的服务
+		String result = HttpClientUtil.doGet(REST_BASE_URL + REST_INDEX_RIGHT_AD_URL);
+		// 把字符串转换成TaotaoResult
+		try {
+			YouTuResult taotaoResult = YouTuResult.formatToList(result, TbContent.class);
+			// 取内容列表
+			List<TbContent> list = (List<TbContent>) taotaoResult.getData();
+			List<Map> resultList = new ArrayList<>();
+			// 创建一个jsp页面要求的pojo列表
+			for (TbContent tbContent : list) {
+				Map map = new HashMap<>();
+				map.put("src", tbContent.getPic());
+				map.put("height", 70);
+				map.put("width", 310);
+				map.put("srcB", tbContent.getPic2());
+				map.put("widthB", 210);
+				map.put("heightB", 70);
+				map.put("href", tbContent.getUrl());
+				map.put("alt", tbContent.getSubTitle());
+				resultList.add(map);
+			}
+			return JsonUtils.objectToJson(resultList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * 查询小广告位数据
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public String getLittleAdContentList() {
+		// 调用服务层的服务
+		String result = HttpClientUtil.doGet(REST_BASE_URL + REST_INDEX_LITTLE_AD_URL);
+		// 把字符串转换成TaotaoResult
+		try {
+			YouTuResult taotaoResult = YouTuResult.formatToList(result, TbContent.class);
+			// 取内容列表
+			List<TbContent> list = (List<TbContent>) taotaoResult.getData();
+			List<Map> resultList = new ArrayList<>();
+			int count = 0;// list遍历的计数器
+			// 创建一个jsp页面要求的pojo列表
+			for (TbContent tbContent : list) {
+				Map map = new HashMap<>();
+				map.put("alt", "");
+				map.put("href", tbContent.getUrl());
+				map.put("index", count);
+				map.put("src", tbContent.getPic());
+				map.put("ext", "");
+				resultList.add(map);
+				count++;
+			}
+			return JsonUtils.objectToJson(resultList);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;

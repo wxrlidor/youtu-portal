@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>优兔网上商城-综合网购首选（JD.COM）-正品低价、品质保障、货到付款、配送及时、放心服务、轻松购物！</title>
-<meta name="description" content="优兔JD.COM-专业的综合网上购物商城，在线销售家电、数码通讯、电脑、家居百货、服装服饰、母婴、图书、食品、在线旅游等数万个品牌千万种优质商品。便捷、诚信的服务，为您提供愉悦的网上商城购物体验! ">
+<meta name="description" content="优兔商城-专业的综合网上购物商城，在线销售家电、数码通讯、电脑、家居百货、服装服饰、母婴、图书、食品、在线旅游等数万个品牌千万种优质商品。便捷、诚信的服务，为您提供愉悦的网上商城购物体验! ">
 <meta name="Keywords" content="网上购物,网上商城,手机,笔记本,电脑,MP3,CD,VCD,DV,相机,数码,配件,手表,存储卡,优兔商城">
 <link href="/css/taotao.css" rel="stylesheet"/>
 <script type="text/javascript">
@@ -33,15 +33,13 @@
 <div class="w">
 <div id="o-slide">
 <div class="slide" id="slide">
-<!-- js方法 -->
 <script type="text/javascript">
 ;(function(cfg, doc) {
     if ( !cfg.DATA_MSlide ) {
         cfg.DATA_MSlide=[];
     }
- // 初始化一个广告信息，该js方法其实是在下面的json格式字符串来生成广告位
     //var data = [{"srcB":"http://image.taotao.com/images/2015/03/03/2015030304360302109345.jpg","height":240,"alt":"","width":670,"src":"http://image.taotao.com/images/2015/03/03/2015030304360302109345.jpg","widthB":550,"href":"http://sale.jd.com/act/e0FMkuDhJz35CNt.html?cpdad=1DLSUE","heightB":240},{"srcB":"http://image.taotao.com/images/2015/03/03/2015030304353109508500.jpg","height":240,"alt":"","width":670,"src":"http://image.taotao.com/images/2015/03/03/2015030304353109508500.jpg","widthB":550,"href":"http://sale.jd.com/act/UMJaAPD2VIXkZn.html?cpdad=1DLSUE","heightB":240},{"srcB":"http://image.taotao.com/images/2015/03/03/2015030304345761102862.jpg","height":240,"alt":"","width":670,"src":"http://image.taotao.com/images/2015/03/03/2015030304345761102862.jpg","widthB":550,"href":"http://sale.jd.com/act/UMJaAPD2VIXkZn.html?cpdad=1DLSUE","heightB":240},{"srcB":"http://image.taotao.com/images/2015/03/03/201503030434200950530.jpg","height":240,"alt":"","width":670,"src":"http://image.taotao.com/images/2015/03/03/201503030434200950530.jpg","widthB":550,"href":"http://sale.jd.com/act/kj2pmwMuYCrGsK3g.html?cpdad=1DLSUE","heightB":240},{"srcB":"http://image.taotao.com/images/2015/03/03/2015030304333327002286.jpg","height":240,"alt":"","width":670,"src":"http://image.taotao.com/images/2015/03/03/2015030304333327002286.jpg","widthB":550,"href":"http://sale.jd.com/act/xcDvNbzAqK0CoG7I.html?cpdad=1DLSUE","heightB":240},{"srcB":"http://image.taotao.com/images/2015/03/03/2015030304324649807137.jpg","height":240,"alt":"","width":670,"src":"http://image.taotao.com/images/2015/03/03/2015030304324649807137.jpg","widthB":550,"href":"http://sale.jd.com/act/eDpBF1s8KcTOYM.html?cpdad=1DLSUE","heightB":240}];
-	//编辑json格式字符串生成${ad1} 
+	//通过get请求rest服务的大广告位数据
     var data = ${ad1};
 
     cfg.DATA_MSlide = data;
@@ -68,7 +66,9 @@
 </div>
 </div><!--mscroll end-->
 <script type="text/javascript">
-pageConfig.DATA_MScroll =[
+//大广告位下面的小广告位数据
+pageConfig.DATA_MScroll=${littleAd};
+/* pageConfig.DATA_MScroll =[
     {
         "alt": "",
         "href": "http://c.fa.jd.com/adclick?sid=2&cid=601&aid=3679&bid=4127&unit=36312&advid=107474&guv=&url=http://sale.jd.com/act/hG3N4B2nt6XUCA.html",
@@ -132,7 +132,7 @@ pageConfig.DATA_MScroll =[
         "src": "http://img11.360buyimg.com/da/jfs/t313/170/1681775134/10831/7f4b7161/5440715aN1f03f497.jpg",
         "ext": ""
     }
-] ;
+] ; */
 (function(object, data) {
     var a = data, b = [], c = [], d, h;
     a.sort(function(a, b) {
@@ -192,7 +192,7 @@ pageConfig.DATA_MScroll =[
 <script>
 // 右上方广告位
 (function() {
-	var data = [
+	/* var data = [
 	            {
 	                "width": 310,
 	                "height": 70,
@@ -203,7 +203,9 @@ pageConfig.DATA_MScroll =[
 	                "heightB": 70,
 	                "srcB": "http://img14.360buyimg.com/da/jfs/t334/155/1756719493/14371/e367c503/5440ce6dNd056ce39.jpg"
 	            }
-	        ];
+	        ]; */
+	//通过get请求rest服务的右上角广告位数据
+	var data = ${rightAd};
     var ad = pageConfig.FN_GetRandomData(data);
     ad = pageConfig.FN_GetCompatibleData(ad);
     document.write("<a href=\"" + ad.href + "\" target=\"_blank\"><img data-img=\"2\" src=\"" + ad.src + "\" width=\"" + ad.width + "\" height=\"" + ad.height + "\" alt=\"" + ad.alt + "\" /></a>");

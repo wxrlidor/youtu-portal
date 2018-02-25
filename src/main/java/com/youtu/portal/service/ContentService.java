@@ -4,6 +4,11 @@ package com.youtu.portal.service;
  *@date:2018年2月24日  下午7:18:15
 **/
 public interface ContentService {
-	String getContentList();
+
+	String getAdContentList();
+
+	String getRightAdContentList();
+
+	String getLittleAdContentList();
 
 }
