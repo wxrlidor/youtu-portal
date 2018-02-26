@@ -39,11 +39,11 @@
 <!-- header start -->
 <jsp:include page="commons/header.jsp" />
 <!-- header end -->
-<div class="w">
+<!-- <div class="w">
 	<div class="breadcrumb">
 		<strong><a href="http://channel.jd.com/electronic.html">家用电器</a></strong><span>&nbsp;&gt;&nbsp;<a href="http://channel.jd.com/737-794.html" >大 家 电</a>&nbsp;&gt;&nbsp;<a href="http://list.jd.com/737-794-798.html" >平板电视</a>&nbsp;&gt;&nbsp;</span><script type="text/javascript">pageConfig.product.cat=[737,794,798];</script><span><a href="http://www.jd.com/pinpai/798-20710.html" >长虹（CHANGHONG）</a>&nbsp;&gt;&nbsp;<a href="http://item.jd.com/1221882.html" >长虹LED42538ES</a></span>
 	</div>
-</div><!--breadcrumb end-->
+</div> --><!--breadcrumb end-->
 <div class="w">
 	<div id="product-intro" >
 		<div id="name">
@@ -55,7 +55,7 @@
 <script type="text/javascript">pageConfig.product.marketPrice='';</script>
 <ul id="summary">
 	<li id="summary-price">
-		<div class="dt">淘&nbsp;淘&nbsp;价：</div>
+		<div class="dt">优&nbsp;兔&nbsp;价：</div>
 		<div class="dd">
 			<strong class="p-price"  id="jd-price">￥<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${item.price / 100 }"/> </strong>
 			<a id="notice-downp" href="#none" target="_blank" clstag="shangpin|keycount|product|jiangjia">(降价通知)</a>
