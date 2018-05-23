@@ -37,6 +37,7 @@ public class OrderServiceImpl implements OrderService {
 		if (youtuResult.getStatus() == 200) {
 			Long orderId = (Long) youtuResult.getData();
 			//提交订单成功后，删除购物车cooike
+			//CookieUtils.setCookie(request, response, "YOUTU_CART", JsonUtils.objectToJson(""), true);
 			CookieUtils.deleteCookie(request, response, "YOUTU_CART");
 			return orderId.toString();
 		}

@@ -63,7 +63,7 @@ public class OrderController {
 			return "order-success";
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("message", "创建订单出错，请联系管理员18813299913 王贤锐");
+			model.addAttribute("message", "创建订单出错，请联系管理员1881329XXXX王贤锐");
 			//出错则返回友好提示页面
 			return "error/exception";
 		}

@@ -61,15 +61,20 @@ public class CartServiceImpl implements CartService {
 		// 取购物车商品列表
 		List<CartItem> itemList = getCartItemList(request);
 		// 判断购物车商品列表中是否存在此商品
-		for (CartItem cItem : itemList) {
-			// 如果存在此商品
-			if (cItem.getId() == itemId) {
-				// 增加商品数量
-				cItem.setNum(cItem.getNum() + num);
-				cartItem = cItem;
-				break;
+		if(itemList!=null){
+			for (CartItem cItem : itemList) {
+				// 如果存在此商品
+				if (cItem.getId() == itemId) {
+					// 增加商品数量
+					cItem.setNum(cItem.getNum() + num);
+					cartItem = cItem;
+					break;
+				}
 			}
+		}else{
+			itemList = new ArrayList<>();
 		}
+		
 		if (cartItem == null) {
 			cartItem = new CartItem();
 			// 根据商品id查询商品基本信息。
